@@ -1,0 +1,128 @@
+/* 1. Cores e fontes: personalize o tema aqui, sem dependências externas. */
+:root {
+    color-scheme: dark;
+    --background: #080d0b;
+    --surface: #101a15;
+    --text: #edf5ef;
+    --muted: #a5b7ad;
+    --accent: #79ffae;
+    --border: #293c30;
+    --font-title: "Fira Code", "JetBrains Mono", Consolas, monospace;
+    --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --page-width: 1120px;
+}
+
+/* 2. Base e navegação por teclado. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.75;
+}
+h1, h2, h3, .brand, .typewriter { font-family: var(--font-title); }
+h2 { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.4; }
+h3 { font-size: 1.05rem; }
+p { color: var(--muted); }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+::selection { background: var(--accent); color: var(--background); }
+[hidden] { display: none !important; }
+
+/* 3. Menu fixo, com fundo opaco para manter a leitura ao rolar. */
+.navigation {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 10;
+    min-height: 78px;
+    padding: 14px max(24px, calc((100% - var(--page-width)) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: #080d0bf5;
+    border-bottom: 1px solid var(--border);
+}
+.brand { font-size: 1.5rem; font-weight: 700; }
+.brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { display: block; color: var(--muted); font-size: .9rem; padding: 7px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); border-color: var(--accent); }
+.menu-toggle { display: none; }
+
+/* GitHub: mesma cor de destaque e transições dos links do menu. */
+.nav-links .github-link { font-family: var(--font-title); color: var(--accent); }
+.github-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    color: var(--accent);
+    font-family: var(--font-title);
+    background: var(--surface);
+    transition: color .2s, border-color .2s, background-color .2s;
+}
+.github-button:hover { color: var(--accent); border-color: var(--accent); background-color: #79ffae12; }
+
+/* 4. Apresentação com grade discreta e nome em destaque. */
+.hero {
+    padding: 170px 24px 80px;
+    border-bottom: 1px solid var(--border);
+    background-image: linear-gradient(#79ffae06 1px, transparent 1px), linear-gradient(90deg, #79ffae06 1px, transparent 1px), radial-gradient(ellipse at 80% 20%, #79ffae12, transparent 65%);
+    background-size: 48px 48px, 48px 48px, auto;
+}
+.hero-content { max-width: var(--page-width); margin: auto; }
+.hero h1 { font-size: clamp(4.5rem, 12vw, 8rem); line-height: 1; letter-spacing: -.07em; margin: 0 0 28px; }
+.hero-content > p { max-width: 650px; font-size: 1.1rem; }
+.hero .typewriter { color: var(--accent); min-height: 3.5em; font-size: clamp(.85rem, 2vw, 1.05rem); }
+.cursor { animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* 5. Sobre mim e espaço circular para a futura fotografia. */
+main { max-width: var(--page-width); margin: auto; padding: 64px 24px 80px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+section { scroll-margin-top: 20px; min-width: 0; }
+#sobre { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 64px; padding-bottom: 48px; }
+.about-content { max-width: 640px; }
+.photo-placeholder { width: 220px; height: 220px; border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 30px #79ffae18, inset 0 0 30px #79ffae0a; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; position: relative; overflow: hidden; }
+.photo-symbol { color: var(--accent); font: 2.5rem var(--font-title); }
+.photo-placeholder p { font-size: .75rem; margin-bottom: 0; }
+/* Aproxima o rosto, que está à direita na foto, mantendo o recorte circular. */
+.photo-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transform: scale(1.6); transform-origin: right 42%; }
+
+/* 6. Cards e animações de entrada, habilitadas apenas pelo JavaScript. */
+.card { padding: 28px; background: linear-gradient(145deg, var(--surface), #0b120e); border: 1px solid var(--border); border-radius: 16px; transition: transform .25s, border-color .25s, box-shadow .25s; }
+.card::before { content: "//"; font-family: var(--font-title); color: var(--accent); }
+.card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 32px #0005; }
+.card h2 { margin-top: 12px; }
+.card p { font-size: .95rem; }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s, transform .65s; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: .85rem; }
+.back-to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px; background: var(--accent); color: var(--background); font-size: 1.5rem; z-index: 9; box-shadow: 0 4px 24px #0008; }
+
+/* 7. Celular: cards empilhados e menu expansível. Sem JS, os links continuam visíveis. */
+@media (max-width: 760px) {
+    .navigation { flex-wrap: wrap; gap: 8px; padding: 12px 24px; }
+    .nav-links { width: 100%; flex-wrap: wrap; gap: 8px 20px; }
+    .menu-toggle:not([hidden]) { display: flex; flex-direction: column; gap: 5px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); cursor: pointer; }
+    .menu-toggle span { width: 22px; height: 2px; background: var(--accent); }
+    .navigation.menu-ready .nav-links { display: none; flex-direction: column; padding: 12px 0; }
+    .navigation.menu-open .nav-links { display: flex; }
+    .hero { padding-top: 185px; padding-bottom: 40px; }
+    main { grid-template-columns: 1fr; padding-top: 40px; }
+    #sobre { grid-template-columns: 1fr; gap: 28px; }
+    .photo-placeholder { justify-self: center; }
+}
+
+/* 8. Acessibilidade: respeita a preferência por menos movimento. */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .card:hover { transform: none; }
+}
