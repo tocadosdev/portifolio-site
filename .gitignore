@@ -1,0 +1,13 @@
+# Foto pessoal disponível apenas no computador.
+img/foto-igor.jpg
+
+# Projeto separado, sem relação com o portfólio.
+template-site-cliente/
+
+# Configurações locais e dependências.
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+Thumbs.db

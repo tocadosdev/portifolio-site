@@ -1,74 +1,153 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça Igor, estudante de Ciência da Computação na UNIFACS, e seu objetivo de atuar com cibersegurança.">
-    <title>Igor | Meu portfólio pessoal</title>
+    <title>Igor | Computação, projetos e cibersegurança</title>
+    <meta name="description" content="Portfólio de Igor, estudante de Ciência da Computação na UNIFACS. Conheça minha trajetória, meus projetos e meu interesse em cibersegurança.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Igor | Computação, projetos e cibersegurança">
+    <meta property="og:description" content="Minha trajetória em Ciência da Computação, projetos e objetivo de atuar com cibersegurança.">
+    <!-- Adicione og:url, og:image e canonical quando tiver uma URL pública e uma imagem de compartilhamento. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header id="inicio" class="hero">
-        <div class="hero-content">
-        <h1>Igor</h1>
-        <p>Estudante de Ciência da Computação e futuro profissional de cibersegurança.</p>
-        <p class="typewriter" aria-hidden="true"><span id="typewriter">Estudante de Ciência da Computação</span><span class="cursor">_</span></p>
-        <!-- Troque MEU-USUARIO pelo seu usuário do GitHub nos dois links desta página. -->
-        <a class="github-button" href="https://github.com/MEU-USUARIO" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Igor no GitHub, abre em nova aba">GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-
-        <nav class="navigation" aria-label="Navegação principal">
-            <a class="brand" href="#inicio" aria-label="Igor — início">igor<span aria-hidden="true">_</span></a>
-            <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu" hidden>
-                <span></span><span></span><span></span>
-            </button>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+        <nav class="navigation container" aria-label="Navegação principal">
+            <a class="brand" href="#inicio" aria-label="Igor, início">Igor<span aria-hidden="true">.</span></a>
+            <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" hidden>Menu <span aria-hidden="true">☰</span></button>
             <ul id="menu" class="nav-links">
-                <li><a href="#sobre">Sobre mim</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#formacao">Formação</a></li>
-                <li><a href="#objetivos">Meus objetivos</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
                 <li><a href="#experiencias">Experiências</a></li>
-                <li><a class="github-link" href="https://github.com/MEU-USUARIO" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Igor no GitHub, abre em nova aba">GitHub</a></li>
+                <li><a href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Igor no GitHub, abre em nova aba">GitHub <span aria-hidden="true">↗</span></a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="sobre">
-            <div class="about-content">
-            <h2>Sobre mim</h2>
-            <p>Olá! Meu nome é Igor e sou estudante de Ciência da Computação na UNIFACS.</p>
-            <p>Criei este espaço para compartilhar quem sou, minha trajetória e minhas experiências.</p>
+    <main id="conteudo" tabindex="-1">
+        <section id="inicio" class="hero container" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow">Portfólio pessoal</p>
+                <h1 id="hero-title">Igor<span class="accent">.</span><br><span class="hero-subtitle">Tecnologia, aprendizado<br>e novos caminhos.</span></h1>
+                <p class="hero-description">Estudante de Ciência da Computação na UNIFACS, com o objetivo de construir uma carreira em cibersegurança.</p>
+                <p class="typewriter" aria-hidden="true"><span id="typewriter">Estudante de Ciência da Computação</span></p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
+                    <a class="button button-secondary" href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Igor no GitHub, abre em nova aba">GitHub <span aria-hidden="true">↗</span></a>
+                </div>
             </div>
+            <aside class="profile-panel" aria-label="Apresentação de Igor">
+                <div class="photo-placeholder">
+                    <!-- A foto pessoal aparece somente na cópia local. Não incluir o arquivo no envio ao GitHub. -->
+                    <span class="photo-monogram" aria-hidden="true">I.</span><span class="sr-only">Espaço reservado para foto de Igor</span>
+                </div>
+                <p class="profile-name">Igor</p>
+                <p class="profile-detail">Ciência da Computação<br>UNIFACS</p>
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="profile-caption">Em formação.<br>Em constante aprendizado.</p>
+            </aside>
+        </section>
 
-            <div class="photo-placeholder">
-                <span class="photo-symbol" aria-hidden="true">&lt;/&gt;</span>
+        <section id="sobre" class="section container" aria-labelledby="sobre-title">
+            <div class="section-heading" data-reveal>
+                <p class="eyebrow">Um pouco de contexto</p>
+                <h2 id="sobre-title">Sobre mim</h2>
+            </div>
+            <div class="about-copy" data-reveal>
+                <p class="large-copy">Olá! Meu nome é Igor e sou estudante de Ciência da Computação na UNIFACS.</p>
+                <p>Criei este espaço para compartilhar quem sou, minha trajetória e minhas experiências. Meu interesse em tecnologia se conecta ao objetivo de me especializar em cibersegurança.</p>
             </div>
         </section>
 
-        <section id="formacao" class="card">
-            <h2>Formação</h2>
-            <h3>Ciência da Computação</h3>
-            <p>Instituição: UNIFACS</p>
-            <p>Situação: cursando.</p>
-            <!-- Adicione aqui outros cursos e certificações conforme sua trajetória. -->
+        <section id="projetos" class="projects-section section" aria-labelledby="projetos-title">
+            <div class="container">
+                <div class="projects-heading" data-reveal>
+                    <div><p class="eyebrow">Ideias em prática</p><h2 id="projetos-title">Projetos</h2></div>
+                    <p>Um espaço para meus sites e criações.<br>Os cards abaixo são exemplos para substituir.</p>
+                </div>
+                <div class="project-filters" role="group" aria-label="Filtrar projetos" hidden>
+                    <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
+                    <button type="button" data-filter="sites" aria-pressed="false">Sites</button>
+                    <button type="button" data-filter="estudos" aria-pressed="false">Estudos</button>
+                </div>
+                <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+                <div class="project-grid">
+                    <!-- NOVO PROJETO: copie um article.project-card, troque data-category, título, descrição e tags.
+                         Substitua a prévia por <img src="img/projeto.jpg" alt="Prévia do projeto" width="800" height="500" loading="lazy">.
+                         Troque os botões desativados por <a class="project-link" href="URL-REAL" target="_blank" rel="noopener noreferrer">Ver site ↗</a>
+                         e outro link para Código. Não publique URLs fictícias. -->
+                    <article class="project-card" data-category="sites" data-reveal>
+                        <div class="project-preview" role="img" aria-label="Espaço reservado para prévia do projeto"><span>Prévia do projeto</span><span aria-hidden="true">01</span></div>
+                        <div class="project-content">
+                            <p class="project-kind">Site · Exemplo fictício</p>
+                            <h3>Estúdio Horizonte</h3>
+                            <p>Exemplo de site institucional para apresentar um estúdio, seus serviços e formas de contato.</p>
+                            <ul class="tags" aria-label="Tecnologias"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                            <div class="project-actions"><button class="project-link" type="button" disabled>Ver site ↗</button><button class="project-link" type="button" disabled>Código ↗</button></div>
+                            <p class="project-note">Links disponíveis ao adicionar um projeto real.</p>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="sites" data-reveal>
+                        <div class="project-preview" role="img" aria-label="Espaço reservado para prévia do projeto"><span>Prévia do projeto</span><span aria-hidden="true">02</span></div>
+                        <div class="project-content">
+                            <p class="project-kind">Site · Exemplo fictício</p>
+                            <h3>Café Aurora</h3>
+                            <p>Exemplo de página para uma cafeteria, com apresentação da marca e destaques do cardápio.</p>
+                            <ul class="tags" aria-label="Tecnologias"><li>HTML</li><li>CSS</li></ul>
+                            <div class="project-actions"><button class="project-link" type="button" disabled>Ver site ↗</button><button class="project-link" type="button" disabled>Código ↗</button></div>
+                            <p class="project-note">Links disponíveis ao adicionar um projeto real.</p>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="estudos" data-reveal>
+                        <div class="project-preview" role="img" aria-label="Espaço reservado para prévia do projeto"><span>Prévia do projeto</span><span aria-hidden="true">03</span></div>
+                        <div class="project-content">
+                            <p class="project-kind">Estudo · Exemplo fictício</p>
+                            <h3>Painel de estudos</h3>
+                            <p>Exemplo de interface para organizar temas de estudo e explorar interações no navegador.</p>
+                            <ul class="tags" aria-label="Tecnologias"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                            <div class="project-actions"><button class="project-link" type="button" disabled>Ver site ↗</button><button class="project-link" type="button" disabled>Código ↗</button></div>
+                            <p class="project-note">Links disponíveis ao adicionar um projeto real.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        <section id="objetivos" class="card">
-            <h2>Meus objetivos</h2>
-            <p>Quero me especializar em cibersegurança e trabalhar nessa área.</p>
-            <p>Meu objetivo é desenvolver conhecimentos para ajudar a proteger sistemas, redes e informações.</p>
-        </section>
-
-        <section id="experiencias" class="card">
-            <h2>Minha trajetória e experiências</h2>
-            <p>Em breve, compartilharei aqui minhas experiências, projetos e aprendizados.</p>
-            <!-- Adicione suas experiências reais nesta seção quando desejar. -->
-        </section>
+        <div class="journey container">
+            <section id="formacao" class="journey-row" aria-labelledby="formacao-title" data-reveal>
+                <div><p class="eyebrow">Minha base</p><h2 id="formacao-title">Formação</h2></div>
+                <div><h3>Ciência da Computação</h3><p>UNIFACS <span aria-hidden="true">·</span> Cursando</p><!-- Adicione cursos e certificações reais aqui. --></div>
+            </section>
+            <section id="objetivos" class="journey-row" aria-labelledby="objetivos-title" data-reveal>
+                <div><p class="eyebrow">O próximo passo</p><h2 id="objetivos-title">Meus objetivos</h2></div>
+                <div><h3>Construir uma carreira em cibersegurança</h3><p>Quero me especializar em cibersegurança e trabalhar nessa área, desenvolvendo conhecimentos para ajudar a proteger sistemas, redes e informações.</p></div>
+            </section>
+            <section id="experiencias" class="journey-row" aria-labelledby="experiencias-title" data-reveal>
+                <div><p class="eyebrow">Minha trajetória</p><h2 id="experiencias-title">Experiências</h2></div>
+                <div><h3>Um espaço em construção</h3><p>Em breve, compartilharei aqui minhas experiências, projetos e aprendizados.</p><!-- Substitua por suas experiências reais. --></div>
+            </section>
+        </div>
     </main>
 
-    <footer>
-        <p>Igor — Meu portfólio pessoal.</p>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div><a class="brand" href="#inicio">Igor<span aria-hidden="true">.</span></a><p>Computação, projetos e aprendizado.</p></div>
+            <div class="footer-links">
+                <a href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Perfil de Igor no GitHub, abre em nova aba">GitHub ↗</a>
+                <!-- Substitua os textos abaixo por links reais quando quiser divulgar seus contatos. -->
+                <span>LinkedIn · em breve</span><span>E-mail · em breve</span>
+            </div>
+        </div>
     </footer>
     <a class="back-to-top" href="#inicio" aria-label="Voltar ao topo" hidden>↑</a>
 </body>

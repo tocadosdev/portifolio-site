@@ -1,128 +1,152 @@
-/* 1. Cores e fontes: personalize o tema aqui, sem dependências externas. */
+/* 1. Tema: todas as cores e fontes podem ser personalizadas aqui. */
 :root {
-    color-scheme: dark;
-    --background: #080d0b;
-    --surface: #101a15;
-    --text: #edf5ef;
-    --muted: #a5b7ad;
-    --accent: #79ffae;
-    --border: #293c30;
-    --font-title: "Fira Code", "JetBrains Mono", Consolas, monospace;
-    --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
-    --page-width: 1120px;
+    color-scheme: light;
+    --background: #fcfcfb;
+    --surface: #f2f3f4;
+    --paper: #ffffff;
+    --text: #242a30;
+    --muted: #5d6670;
+    --accent: #47647d;
+    --accent-hover: #334e65;
+    --accent-soft: #e7edf2;
+    --border: #dfe3e6;
+    --preview: #e8ebed;
+    --preview-end: #f3f4f5;
+    --glass: rgb(252 252 251 / 94%);
+    --shadow-color: rgb(28 42 55 / 7%);
+    --photo-border: #ffffff;
+    --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-heading: var(--font-body);
+    --page-width: 1160px;
+    --header-height: 90px;
+    --radius: 14px;
 }
 
-/* 2. Base e navegação por teclado. */
+/* 2. Base e navegação por teclado. O conteúdo permanece acessível sem JavaScript. */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 110px; }
-body {
-    margin: 0;
-    background: var(--background);
-    color: var(--text);
-    font-family: var(--font-body);
-    line-height: 1.75;
-}
-h1, h2, h3, .brand, .typewriter { font-family: var(--font-title); }
-h2 { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.4; }
-h3 { font-size: 1.05rem; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 24px); }
+body { margin: 0; color: var(--text); background: var(--background); font: 400 1rem/1.8 var(--font-body); overflow-wrap: anywhere; }
+h1, h2, h3 { font-family: var(--font-heading); line-height: 1.25; letter-spacing: -.04em; }
+h1, h2, h3, p { margin-top: 0; }
+h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 700; }
+h3 { font-size: 1.17rem; letter-spacing: -.025em; }
 p { color: var(--muted); }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
-::selection { background: var(--accent); color: var(--background); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+img { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+::selection { background: var(--accent-soft); color: var(--text); }
+.container { width: min(var(--page-width), calc(100% - 40px)); margin-inline: auto; }
+.accent { color: var(--accent); }
+.eyebrow { color: var(--accent); text-transform: uppercase; font-size: .7rem; font-weight: 800; letter-spacing: .16em; margin-bottom: 16px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-link { position: fixed; top: 12px; left: 20px; z-index: 30; padding: 10px 18px; background: var(--paper); transform: translateY(-200%); border: 1px solid var(--border); }
+.skip-link:focus { transform: none; }
 
-/* 3. Menu fixo, com fundo opaco para manter a leitura ao rolar. */
-.navigation {
-    position: fixed;
-    inset: 0 0 auto;
-    z-index: 10;
-    min-height: 78px;
-    padding: 14px max(24px, calc((100% - var(--page-width)) / 2));
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    background: #080d0bf5;
-    border-bottom: 1px solid var(--border);
-}
-.brand { font-size: 1.5rem; font-weight: 700; }
+/* 3. Menu fixo: sombra e vidro discreto ao rolar. */
+.site-header { position: fixed; inset: 0 0 auto; z-index: 20; background: var(--background); border-bottom: 1px solid var(--border); transition: box-shadow .25s, background-color .25s; }
+.site-header.is-scrolled { background: var(--glass); backdrop-filter: blur(14px); box-shadow: 0 4px 22px var(--shadow-color); }
+.navigation { min-height: var(--header-height); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 30px; padding-block: 16px; }
+.brand { color: var(--text); font-size: 1.7rem; font-weight: 800; letter-spacing: -.07em; }
 .brand span { color: var(--accent); }
-.nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-.nav-links a { display: block; color: var(--muted); font-size: .9rem; padding: 7px 0; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.nav-links { width: 100%; list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.nav-links a { display: block; padding: 7px 0; color: var(--muted); font-size: .8rem; font-weight: 600; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent); border-color: var(--accent); }
-.menu-toggle { display: none; }
+.menu-toggle { padding: 8px 12px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--border); border-radius: 6px; color: var(--text); background: var(--paper); font-size: .85rem; }
+.menu-ready .nav-links { flex-direction: column; }
+.reading-progress { position: fixed; inset: 0 0 auto; height: 2px; background: var(--accent); z-index: 25; transform: scaleX(0); transform-origin: left; }
 
-/* GitHub: mesma cor de destaque e transições dos links do menu. */
-.nav-links .github-link { font-family: var(--font-title); color: var(--accent); }
-.github-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 24px;
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    color: var(--accent);
-    font-family: var(--font-title);
-    background: var(--surface);
-    transition: color .2s, border-color .2s, background-color .2s;
+/* 4. Hero: composição limpa, tipografia editorial e retrato. */
+.hero { display: grid; gap: 48px; padding-top: 230px; padding-bottom: 64px; align-items: center; }
+body.menu-ready .hero { padding-top: 150px; }
+.hero h1 { font-size: clamp(3.8rem, 7vw, 6rem); font-weight: 800; line-height: 1.12; margin-bottom: 24px; }
+.hero-subtitle { display: block; font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 500; letter-spacing: -.045em; margin-top: 18px; }
+.hero-description { max-width: 550px; font-size: 1.03rem; }
+.typewriter { color: var(--accent); font-size: .82rem; min-height: 3.6em; max-width: 530px; margin: 24px 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; padding: 12px 22px; border: 1px solid var(--border); border-radius: 7px; font-size: .85rem; font-weight: 700; transition: background-color .2s, border-color .2s; }
+.button-primary { color: var(--paper); background: var(--accent); border-color: var(--accent); }
+.button-primary:hover { color: var(--paper); background: var(--accent-hover); border-color: var(--accent-hover); }
+.button-secondary { color: var(--text); background: var(--paper); }
+.button-secondary:hover { border-color: var(--accent); background: var(--accent-soft); }
+.profile-panel { padding: 38px 24px; border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(150deg, var(--paper), var(--surface)); text-align: center; }
+.photo-placeholder { width: 180px; height: 180px; margin: 0 auto 24px; border: 6px solid var(--photo-border); outline: 1px solid var(--border); border-radius: 50%; overflow: hidden; position: relative; display: grid; place-items: center; background: var(--preview); box-shadow: 0 6px 24px var(--shadow-color); }
+.photo-placeholder img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transform: scale(1.6); transform-origin: right 42%; }
+.photo-monogram { color: var(--accent); font-size: 3.4rem; font-weight: 600; }
+.profile-name { color: var(--text); margin-bottom: 4px; font-size: 1.2rem; font-weight: 700; }
+.profile-detail { font-size: .83rem; }
+.profile-rule { display: block; width: 30px; height: 1px; background: var(--border); margin: 24px auto; }
+.profile-caption { font-size: .75rem; margin-bottom: 0; }
+
+/* 5. Sobre e projetos. As prévias cinza não simulam projetos concluídos. */
+.section { padding-block: 64px; }
+#sobre { display: grid; gap: 20px; border-top: 1px solid var(--border); }
+.about-copy { max-width: 660px; }
+.large-copy { color: var(--text); font-size: 1.25rem; line-height: 1.7; }
+.projects-section { background: var(--surface); border-block: 1px solid var(--border); }
+.projects-heading { display: flex; flex-direction: column; gap: 8px; }
+.projects-heading h2 { margin-bottom: 16px; }
+.projects-heading > p { font-size: .9rem; }
+.project-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 28px; }
+.project-filters button { color: var(--muted); background: var(--paper); border: 1px solid var(--border); border-radius: 24px; padding: 7px 16px; font-size: .8rem; }
+.project-filters button:hover, .project-filters button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+.project-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+.project-card { min-width: 0; background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .25s, box-shadow .25s; }
+@media (hover: hover) { .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px var(--shadow-color); } }
+.project-preview { aspect-ratio: 8 / 5; padding: 24px; display: flex; align-items: flex-end; justify-content: space-between; background: linear-gradient(135deg, var(--preview), var(--preview-end)); color: var(--muted); font-size: .7rem; border-bottom: 1px solid var(--border); }
+.project-preview > span:last-child { font-size: 2.7rem; line-height: 1; font-weight: 500; color: var(--muted); }
+.project-card > img { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border-bottom: 1px solid var(--border); }
+.project-content { padding: 24px; }
+.project-kind { font-size: .65rem; color: var(--accent); text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: 12px; }
+.project-content h3 { margin-bottom: 12px; }
+.project-content > p:not(.project-kind):not(.project-note) { font-size: .85rem; min-height: 5.4em; }
+.tags { display: flex; flex-wrap: wrap; list-style: none; gap: 6px; padding: 0; margin: 22px 0; }
+.tags li { border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; color: var(--muted); font-size: .65rem; }
+.project-actions { display: flex; gap: 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+.project-link { padding: 0; border: 0; background: none; color: var(--accent); font-size: .8rem; font-weight: 700; }
+.project-link:hover:not(:disabled) { color: var(--accent-hover); text-decoration: underline; }
+.project-link:disabled { color: var(--muted); }
+.project-note { font-size: .65rem; margin: 10px 0 0; }
+
+/* 6. Seções da trajetória com início distinto, para navegação inequívoca. */
+.journey { padding-block: 30px 60px; }
+.journey-row { display: grid; gap: 20px; padding-block: 48px; border-bottom: 1px solid var(--border); }
+.journey-row h2 { margin-bottom: 0; }
+.journey-row > div:last-child { max-width: 620px; }
+.journey-row p:last-child { margin-bottom: 0; }
+.site-footer { border-top: 1px solid var(--border); background: var(--surface); padding-block: 40px; }
+.footer-content { display: flex; flex-direction: column; gap: 24px; }
+.footer-content p { font-size: .8rem; margin: 8px 0 0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; font-size: .8rem; }
+.footer-links span { color: var(--muted); }
+.back-to-top { position: fixed; bottom: 22px; right: 22px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 50%; background: var(--paper); color: var(--accent); box-shadow: 0 4px 20px var(--shadow-color); z-index: 10; }
+
+/* 7. Entrées discrètes. JS ativo e suporte ao observer são necessários para ocultar. */
+.reveal-pending { opacity: 0; transform: translateY(16px); }
+.is-revealed { animation: reveal .65s both; animation-delay: var(--reveal-delay, 0ms); }
+@keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 8. Tablet e desktop: duas e três colunas nos projetos. */
+@media (min-width: 640px) { .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) {
+    :root { --header-height: 84px; }
+    .navigation { flex-wrap: nowrap; }
+    .nav-links, .menu-ready .nav-links { width: auto; flex-direction: row; gap: 24px; }
+    .menu-toggle { display: none; }
+    .hero, body.menu-ready .hero { grid-template-columns: 1.65fr 1fr; gap: 72px; padding-block: 158px 92px; }
+    .profile-panel { max-width: 330px; width: 100%; justify-self: end; }
+    .section { padding-block: 88px; }
+    #sobre, .journey-row { grid-template-columns: 1fr 1.65fr; gap: 60px; }
+    .projects-heading { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+    .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .footer-content { flex-direction: row; align-items: center; justify-content: space-between; }
 }
-.github-button:hover { color: var(--accent); border-color: var(--accent); background-color: #79ffae12; }
-
-/* 4. Apresentação com grade discreta e nome em destaque. */
-.hero {
-    padding: 170px 24px 80px;
-    border-bottom: 1px solid var(--border);
-    background-image: linear-gradient(#79ffae06 1px, transparent 1px), linear-gradient(90deg, #79ffae06 1px, transparent 1px), radial-gradient(ellipse at 80% 20%, #79ffae12, transparent 65%);
-    background-size: 48px 48px, 48px 48px, auto;
-}
-.hero-content { max-width: var(--page-width); margin: auto; }
-.hero h1 { font-size: clamp(4.5rem, 12vw, 8rem); line-height: 1; letter-spacing: -.07em; margin: 0 0 28px; }
-.hero-content > p { max-width: 650px; font-size: 1.1rem; }
-.hero .typewriter { color: var(--accent); min-height: 3.5em; font-size: clamp(.85rem, 2vw, 1.05rem); }
-.cursor { animation: blink 1s step-end infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-
-/* 5. Sobre mim e espaço circular para a futura fotografia. */
-main { max-width: var(--page-width); margin: auto; padding: 64px 24px 80px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-section { scroll-margin-top: 20px; min-width: 0; }
-#sobre { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 64px; padding-bottom: 48px; }
-.about-content { max-width: 640px; }
-.photo-placeholder { width: 220px; height: 220px; border: 1px solid var(--accent); border-radius: 50%; box-shadow: 0 0 30px #79ffae18, inset 0 0 30px #79ffae0a; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; position: relative; overflow: hidden; }
-.photo-symbol { color: var(--accent); font: 2.5rem var(--font-title); }
-.photo-placeholder p { font-size: .75rem; margin-bottom: 0; }
-/* Aproxima o rosto, que está à direita na foto, mantendo o recorte circular. */
-.photo-placeholder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transform: scale(1.6); transform-origin: right 42%; }
-
-/* 6. Cards e animações de entrada, habilitadas apenas pelo JavaScript. */
-.card { padding: 28px; background: linear-gradient(145deg, var(--surface), #0b120e); border: 1px solid var(--border); border-radius: 16px; transition: transform .25s, border-color .25s, box-shadow .25s; }
-.card::before { content: "//"; font-family: var(--font-title); color: var(--accent); }
-.card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 32px #0005; }
-.card h2 { margin-top: 12px; }
-.card p { font-size: .95rem; }
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s, transform .65s; }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
-footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: .85rem; }
-.back-to-top { position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 12px; background: var(--accent); color: var(--background); font-size: 1.5rem; z-index: 9; box-shadow: 0 4px 24px #0008; }
-
-/* 7. Celular: cards empilhados e menu expansível. Sem JS, os links continuam visíveis. */
-@media (max-width: 760px) {
-    .navigation { flex-wrap: wrap; gap: 8px; padding: 12px 24px; }
-    .nav-links { width: 100%; flex-wrap: wrap; gap: 8px 20px; }
-    .menu-toggle:not([hidden]) { display: flex; flex-direction: column; gap: 5px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); cursor: pointer; }
-    .menu-toggle span { width: 22px; height: 2px; background: var(--accent); }
-    .navigation.menu-ready .nav-links { display: none; flex-direction: column; padding: 12px 0; }
-    .navigation.menu-open .nav-links { display: flex; }
-    .hero { padding-top: 185px; padding-bottom: 40px; }
-    main { grid-template-columns: 1fr; padding-top: 40px; }
-    #sobre { grid-template-columns: 1fr; gap: 28px; }
-    .photo-placeholder { justify-self: center; }
-}
-
-/* 8. Acessibilidade: respeita a preferência por menos movimento. */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .reveal { opacity: 1; transform: none; }
-    .card:hover { transform: none; }
+    .reveal-pending { opacity: 1; transform: none; }
+    .project-card:hover { transform: none; }
 }

@@ -1,122 +1,180 @@
-// 1. Digitação no hero. O texto original continua disponível para leitores de tela.
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const typewriter = document.querySelector('#typewriter');
-const phrases = [
-    'Estudante de Ciência da Computação',
-    'Futuro profissional de Cibersegurança'
-];
-let phraseIndex = 0;
-let characterIndex = phrases[0].length;
-let deleting = true;
-let typingTimer;
-
-function typePhrase() {
-    if (reducedMotion.matches) return;
-    const phrase = phrases[phraseIndex];
-    characterIndex += deleting ? -1 : 1;
-    typewriter.textContent = phrase.slice(0, characterIndex);
-    let delay = deleting ? 35 : 75;
-
-    if (!deleting && characterIndex === phrase.length) {
-        deleting = true;
-        delay = 2000;
-    } else if (deleting && characterIndex === 0) {
-        deleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        delay = 350;
-    }
-    typingTimer = window.setTimeout(typePhrase, delay);
-}
-
-function updateMotionPreference() {
-    window.clearTimeout(typingTimer);
-    if (reducedMotion.matches) {
-        typewriter.textContent = phrases[0];
-    } else {
-        characterIndex = 0;
-        deleting = false;
-        typePhrase();
-    }
-}
-if (!reducedMotion.matches) typingTimer = window.setTimeout(typePhrase, 2000);
-reducedMotion.addEventListener('change', updateMotionPreference);
-
-// 2. Menu do celular: botão, Escape e fechamento após escolher uma seção.
-const navigation = document.querySelector('.navigation');
+// 1. Menu: melhoria progressiva, teclado e retorno do foco.
+const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const desktop = window.matchMedia('(min-width: 960px)');
+const header = document.querySelector('.site-header');
+const menu = document.querySelector('#menu');
 const menuButton = document.querySelector('.menu-toggle');
-const menuLinks = [...document.querySelectorAll('.nav-links a')];
-const mobileScreen = window.matchMedia('(max-width: 760px)');
-menuButton.hidden = false;
-navigation.classList.add('menu-ready');
+const allMenuLinks = [...menu.querySelectorAll('a')];
+const sectionLinks = allMenuLinks.filter(link => link.getAttribute('href').startsWith('#'));
+document.body.classList.add('menu-ready');
 
 function setMenu(open) {
-    navigation.classList.toggle('menu-open', open);
+    menu.hidden = !open;
     menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    menuButton.firstChild.textContent = open ? 'Fechar ' : 'Menu ';
 }
-menuButton.addEventListener('click', () => {
-    setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
-});
-menuLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
+function adaptMenu() {
+    const activeElement = document.activeElement;
+    const focusInMenu = menu.contains(activeElement);
+    menuButton.hidden = desktop.matches;
+    setMenu(desktop.matches);
+    if (!desktop.matches && focusInMenu) menuButton.focus();
+    if (desktop.matches && activeElement === menuButton) allMenuLinks[0].focus();
+}
+menuButton.addEventListener('click', () => setMenu(menu.hidden));
+allMenuLinks.forEach(link => link.addEventListener('click', () => {
+    if (desktop.matches) return;
+    setMenu(false);
+    if (link.hash && link.origin === window.location.origin) {
+        const target = document.getElementById(link.hash.slice(1));
+        if (target) {
+            target.setAttribute('tabindex', '-1');
+            target.focus({ preventScroll: true });
+        }
+    } else menuButton.focus();
+}));
 document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && navigation.classList.contains('menu-open')) {
+    if (event.key === 'Escape' && !desktop.matches && !menu.hidden) {
         setMenu(false);
         menuButton.focus();
     }
 });
 document.addEventListener('click', event => {
-    if (!navigation.contains(event.target)) setMenu(false);
+    if (!desktop.matches && !menu.hidden && !header.contains(event.target)) {
+        const focusInMenu = menu.contains(document.activeElement);
+        setMenu(false);
+        if (focusInMenu) menuButton.focus();
+    }
 });
-mobileScreen.addEventListener('change', () => setMenu(false));
+desktop.addEventListener('change', adaptMenu);
+adaptMenu();
 
-// 3. Revela cada seção uma vez. Sem suporte ao observer, tudo permanece visível.
-const sections = [...document.querySelectorAll('main section')];
-if ('IntersectionObserver' in window && !reducedMotion.matches) {
-    const revealObserver = new IntersectionObserver(entries => {
+// 2. Digitação sem cursor. O texto completo e acessível já está no hero.
+const typewriter = document.querySelector('#typewriter');
+const phrases = ['Estudante de Ciência da Computação', 'Meu próximo passo: cibersegurança'];
+let phraseIndex = 0;
+let position = phrases[0].length;
+let deleting = true;
+let typingTimer;
+function typePhrase() {
+    const phrase = phrases[phraseIndex];
+    position += deleting ? -1 : 1;
+    typewriter.textContent = phrase.slice(0, position);
+    let delay = deleting ? 28 : 65;
+    if (deleting && position === 0) {
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        deleting = false;
+        delay = 300;
+    } else if (!deleting && position === phrase.length) {
+        deleting = true;
+        delay = 3200;
+    }
+    typingTimer = window.setTimeout(typePhrase, delay);
+}
+function syncTyping() {
+    window.clearTimeout(typingTimer);
+    phraseIndex = 0;
+    position = phrases[0].length;
+    deleting = true;
+    typewriter.textContent = phrases[0];
+    if (!motion.matches && !document.hidden) typingTimer = window.setTimeout(typePhrase, 3200);
+}
+motion.addEventListener('change', syncTyping);
+document.addEventListener('visibilitychange', syncTyping);
+syncTyping();
+
+// 3. Entrada com atraso escalonado; sem observer, o conteúdo fica visível.
+const revealElements = [...document.querySelectorAll('[data-reveal]')];
+document.querySelectorAll('.project-card').forEach((card, index) => {
+    card.style.setProperty('--reveal-delay', (index % 3) * 90 + 'ms');
+});
+if ('IntersectionObserver' in window && !motion.matches) {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                revealObserver.unobserve(entry.target);
+                entry.target.classList.remove('reveal-pending');
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => {
-        section.classList.add('reveal');
-        revealObserver.observe(section);
+    }, { threshold: 0.08 });
+    revealElements.forEach(element => {
+        element.classList.add('reveal-pending');
+        observer.observe(element);
+    });
+    motion.addEventListener('change', () => {
+        if (!motion.matches) return;
+        observer.disconnect();
+        revealElements.forEach(element => element.classList.remove('reveal-pending'));
     });
 }
 
-// 4. Atualiza o link ativo e mostra o botão de topo, limitando a uma atualização por frame.
-const backToTop = document.querySelector('.back-to-top');
-let scrollScheduled = false;
-
-function updateScrollState() {
-    const activationLine = Math.max(120, window.innerHeight * 0.35);
-    let activeSection = null;
-    sections.forEach(section => {
-        if (section.getBoundingClientRect().top <= activationLine) activeSection = section;
+// 4. Filtros acessíveis. Não escondemos projetos de usuários sem JavaScript.
+const filters = document.querySelector('.project-filters');
+const projectCards = [...document.querySelectorAll('.project-card')];
+const filterStatus = document.querySelector('#filter-status');
+filters.hidden = false;
+filters.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.dataset.filter;
+        filters.querySelectorAll('button').forEach(item => {
+            item.setAttribute('aria-pressed', String(item === button));
+        });
+        let visibleCount = 0;
+        projectCards.forEach(card => {
+            card.hidden = category !== 'todos' && card.dataset.category !== category;
+            if (!card.hidden) visibleCount++;
+        });
+        filterStatus.textContent = visibleCount + (visibleCount === 1 ? ' projeto exibido.' : ' projetos exibidos.');
+        scheduleScroll();
     });
-    // No fim da página, a última seção pode não alcançar a linha de ativação.
-    if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
-        activeSection = sections[sections.length - 1];
-    }
-    menuLinks.forEach(link => {
-        const active = activeSection !== null && link.hash === `#${activeSection.id}`;
-        link.classList.toggle('active', active);
-        if (active) link.setAttribute('aria-current', 'location');
+});
+
+// 5. Progresso, menu ativo e botão de topo em uma única atualização por frame.
+const progress = document.querySelector('.reading-progress');
+const backToTop = document.querySelector('.back-to-top');
+const sections = sectionLinks.map(link => document.getElementById(link.hash.slice(1)));
+let scheduled = false;
+function updateScroll() {
+    const top = window.scrollY;
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (scrollable > 0 ? Math.min(1, Math.max(0, top / scrollable)) : 0) + ')';
+    header.classList.toggle('is-scrolled', top > 16);
+    backToTop.hidden = top < 400;
+
+    // Usa a área visível abaixo do cabeçalho. Em empates, escolhe o início
+    // mais próximo do topo; não depende da ordem de cards lado a lado.
+    const offset = header.getBoundingClientRect().height + 16;
+    let active = null;
+    let bestScore = 0;
+    let bestDistance = Infinity;
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, offset));
+        const score = visible / Math.max(1, Math.min(rect.height, window.innerHeight - offset));
+        const distance = Math.abs(rect.top - offset);
+        if (score > bestScore + 0.001 || (score > 0 && Math.abs(score - bestScore) <= 0.001 && distance < bestDistance)) {
+            bestScore = score;
+            bestDistance = distance;
+            active = section;
+        }
+    });
+    if (top > 0 && top + window.innerHeight >= document.documentElement.scrollHeight - 4) active = sections[sections.length - 1];
+    sectionLinks.forEach(link => {
+        const current = active !== null && link.hash === '#' + active.id;
+        link.classList.toggle('active', current);
+        if (current) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
     });
-    backToTop.hidden = window.scrollY < 350;
-    scrollScheduled = false;
+    scheduled = false;
 }
-
-function scheduleScrollUpdate() {
-    if (!scrollScheduled) {
-        scrollScheduled = true;
-        window.requestAnimationFrame(updateScrollState);
-    }
+function scheduleScroll() {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(updateScroll);
 }
-window.addEventListener('scroll', scheduleScrollUpdate, { passive: true });
-window.addEventListener('resize', scheduleScrollUpdate);
-updateScrollState();
+window.addEventListener('scroll', scheduleScroll, { passive: true });
+window.addEventListener('resize', scheduleScroll);
+window.addEventListener('load', scheduleScroll);
+if ('ResizeObserver' in window) new ResizeObserver(scheduleScroll).observe(document.body);
+updateScroll();
