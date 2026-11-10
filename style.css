@@ -162,3 +162,14 @@ body.menu-ready .hero { padding-top: 150px; }
 .learning-label { display: inline-block; color: var(--accent); background: var(--accent-soft); margin-bottom: 16px; font-weight: 700; }
 .skill-description { font-size: .88rem; margin-bottom: 0; }
 @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Página 404: usa as mesmas variáveis e componentes do portfólio, sem JavaScript. */
+.not-found-page { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+.not-found-header { padding-block: 28px; }
+.not-found-main { flex: 1; display: grid; place-items: center; padding-block: 40px; }
+.not-found-card { width: min(100%, 720px); padding: clamp(24px, 5vw, 56px); border: 1px solid var(--border); border-radius: var(--radius); background: linear-gradient(140deg, var(--paper), var(--surface)); }
+.not-found-code { margin-bottom: 12px; color: var(--accent); font-size: clamp(5rem, 16vw, 9rem); font-weight: 800; line-height: 1; letter-spacing: -.08em; }
+.not-found-card h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+.not-found-card > p:not(.eyebrow):not(.not-found-code) { max-width: 48ch; margin-bottom: 28px; }
+.not-found-footer { padding-block: 24px; font-size: .8rem; border-top: 1px solid var(--border); }
+.not-found-footer p { margin-bottom: 0; }
