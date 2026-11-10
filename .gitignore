@@ -1,5 +1,6 @@
-# Foto pessoal disponível apenas no computador.
-img/foto-igor.jpg
+# A foto publicada contém somente as versões otimizadas.
+img/*original*
+img/*backup*
 
 # Projeto separado, sem relação com o portfólio.
 template-site-cliente/

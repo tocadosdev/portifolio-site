@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Igor C. Sales | Computação, projetos e cibersegurança</title>
     <meta name="description" content="Portfólio de Igor C. Sales, estudante de Ciência da Computação na UNIFACS. Conheça minha trajetória, meus projetos e meu interesse em cibersegurança.">
+    <meta name="theme-color" content="#fcfcfb">
+    <link rel="canonical" href="https://igordev-portifolio.vercel.app/">
+    <meta property="og:title" content="Igor C. Sales | Computação, projetos e cibersegurança">
+    <meta property="og:description" content="Portfólio de Igor C. Sales, estudante de Ciência da Computação na UNIFACS. Conheça minha trajetória, meus projetos e meu interesse em cibersegurança.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:title" content="Igor C. Sales | Computação, projetos e cibersegurança">
-    <meta property="og:description" content="Minha trajetória em Ciência da Computação, projetos e objetivo de atuar com cibersegurança.">
-    <!-- Adicione og:url, og:image e canonical quando tiver uma URL pública e uma imagem de compartilhamento. -->
+    <meta property="og:url" content="https://igordev-portifolio.vercel.app/">
+    <meta property="og:image" content="https://igordev-portifolio.vercel.app/img/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Igor C. Sales — portfólio pessoal">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Igor C. Sales | Computação, projetos e cibersegurança">
+    <meta name="twitter:description" content="Portfólio de Igor C. Sales, estudante de Ciência da Computação na UNIFACS. Conheça minha trajetória, meus projetos e meu interesse em cibersegurança.">
+    <meta name="twitter:image" content="https://igordev-portifolio.vercel.app/img/og-image.png">
+    <meta name="twitter:image:alt" content="Igor C. Sales — portfólio pessoal">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="alternate" hreflang="pt-BR" href="https://igordev-portifolio.vercel.app/">
     <link rel="alternate" hreflang="en" href="https://igordev-portifolio.vercel.app/en.html">
     <link rel="alternate" hreflang="x-default" href="https://igordev-portifolio.vercel.app/">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -60,8 +73,11 @@
             </div>
             <aside class="profile-panel" aria-label="Apresentação de Igor C. Sales">
                 <div class="photo-placeholder">
-                    <!-- A foto pessoal aparece somente na cópia local. Não incluir o arquivo no envio ao GitHub. -->
-                    <span class="photo-monogram" aria-hidden="true">ICS</span><span class="sr-only">Espaço reservado para foto de Igor C. Sales</span>
+                    <!-- Foto otimizada: WebP com fallback JPG; manter as dimensões reais. -->
+                    <picture>
+                        <source srcset="img/foto-igor.webp" type="image/webp">
+                        <img src="img/foto-igor.jpg" alt="Foto de Igor C. Sales" width="702" height="868" loading="lazy" decoding="async">
+                    </picture>
                 </div>
                 <p class="profile-name">Igor C. Sales</p>
                 <p class="profile-detail">Ciência da Computação<br>UNIFACS</p>
