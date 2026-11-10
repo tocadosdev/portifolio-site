@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Igor C. Sales | Computer Science, projects and cybersecurity</title>
+    <meta name="description" content="Portfolio of Igor C. Sales, a Computer Science student at UNIFACS. Explore my background, projects and interest in cybersecurity.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Igor C. Sales | Computer Science, projects and cybersecurity">
+    <meta property="og:description" content="My journey in Computer Science, projects and goal of working in cybersecurity.">
+    <!-- Adicione og:url, og:image e canonical quando tiver uma URL pública e uma imagem de compartilhamento. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="alternate" hreflang="pt-BR" href="https://igordev-portifolio.vercel.app/">
+    <link rel="alternate" hreflang="en" href="https://igordev-portifolio.vercel.app/en.html">
+    <link rel="alternate" hreflang="x-default" href="https://igordev-portifolio.vercel.app/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Skip to content</a>
+    <div class="reading-progress" aria-hidden="true"></div>
+    <header class="site-header">
+        <div class="language-bar container">
+            <!-- Links funcionam sem JavaScript; a página ativa é indicada por aria-current. -->
+            <nav class="language-switch" aria-label="Choose language">
+                <a href="index.html" lang="pt-BR" hreflang="pt-BR" aria-label="Read in Brazilian Portuguese"><img src="flag-br.svg" alt="" width="20" height="14"><span>PT-BR</span></a>
+                <a href="en.html" lang="en" hreflang="en" aria-label="Read in English" aria-current="page"><img src="flag-us.svg" alt="" width="20" height="14"><span>ENG</span></a>
+            </nav>
+        </div>
+        <nav class="navigation container" aria-label="Main navigation">
+            <a class="brand" href="#inicio" aria-label="Igor C. Sales, home">Igor C. Sales</a>
+            <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" hidden>Menu <span aria-hidden="true">☰</span></button>
+            <ul id="menu" class="nav-links">
+                <li><a href="#sobre">About</a></li>
+                <li><a href="#projetos">Projects</a></li>
+                <li><a href="#formacao">Education</a></li>
+                <li><a href="#objetivos">Goals</a></li>
+                <li><a href="#experiencias">Experience</a></li>
+                <li><a href="#habilidades">Skills</a></li>
+                <li><a href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Igor C. Sales on GitHub, opens in a new tab">GitHub <span aria-hidden="true">↗</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="conteudo" tabindex="-1">
+        <section id="inicio" class="hero container" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="eyebrow">Personal portfolio</p>
+                <h1 id="hero-title">Igor C. Sales<br><span class="hero-subtitle">Technology, learning<br>and new directions.</span></h1>
+                <p class="hero-description">Computer Science student at UNIFACS, working towards a career in cybersecurity.</p>
+                <p class="typewriter" aria-hidden="true"><span id="typewriter">Computer Science student</span></p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#projetos">View projects <span aria-hidden="true">↓</span></a>
+                    <a class="button button-secondary" href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Igor C. Sales on GitHub, opens in a new tab">GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+            <aside class="profile-panel" aria-label="About Igor C. Sales">
+                <div class="photo-placeholder">
+                    <!-- A foto pessoal aparece somente na cópia local. Não incluir o arquivo no envio ao GitHub. -->
+                    <span class="photo-monogram" aria-hidden="true">ICS</span><span class="sr-only">Placeholder for a photo of Igor C. Sales</span>
+                </div>
+                <p class="profile-name">Igor C. Sales</p>
+                <p class="profile-detail">Computer Science<br>UNIFACS</p>
+                <span class="profile-rule" aria-hidden="true"></span>
+                <p class="profile-caption">Learning today.<br>Always growing.</p>
+            </aside>
+        </section>
+
+        <section id="sobre" class="section container" aria-labelledby="sobre-title">
+            <div class="section-heading" data-reveal>
+                <p class="eyebrow">A little context</p>
+                <h2 id="sobre-title">About me</h2>
+            </div>
+            <div class="about-copy" data-reveal>
+                <p class="large-copy">Hello! My name is Igor C. Sales, and I am a Computer Science student at UNIFACS.</p>
+                <p>I created this space to share who I am, my journey and my experiences. My interest in technology connects with my goal of specializing in cybersecurity.</p>
+            </div>
+        </section>
+
+        <section id="projetos" class="projects-section section" aria-labelledby="projetos-title">
+            <div class="container">
+                <div class="projects-heading" data-reveal>
+                    <div><p class="eyebrow">Ideas in practice</p><h2 id="projetos-title">Projects</h2></div>
+                    <p>A space for my websites and creations.<br>The cards below are examples to replace.</p>
+                </div>
+                <div class="project-filters" role="group" aria-label="Filter projects" hidden>
+                    <button type="button" data-filter="todos" aria-pressed="true">All</button>
+                    <button type="button" data-filter="sites" aria-pressed="false">Websites</button>
+                    <button type="button" data-filter="estudos" aria-pressed="false">Studies</button>
+                </div>
+                <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+                <div class="project-grid">
+                    <!-- NOVO PROJETO: copie um article.project-card, troque data-category, título, descrição e tags.
+                         Substitua a prévia por <img src="img/projeto.jpg" alt="Project preview" width="800" height="500" loading="lazy">.
+                         Troque os botões desativados por <a class="project-link" href="URL-REAL" target="_blank" rel="noopener noreferrer">View website ↗</a>
+                         e outro link para Code. Não publique URLs fictícias. -->
+                    <article class="project-card" data-category="sites" data-reveal>
+                        <div class="project-preview" role="img" aria-label="Project preview placeholder"><span>Project preview</span><span aria-hidden="true">01</span></div>
+                        <div class="project-content">
+                            <p class="project-kind">Website · Fictional example</p>
+                            <h3>Horizonte Studio</h3>
+                            <p>An example business website presenting a studio, its services and contact information.</p>
+                            <ul class="tags" aria-label="Technologies"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                            <div class="project-actions"><button class="project-link" type="button" disabled>View website ↗</button><button class="project-link" type="button" disabled>Code ↗</button></div>
+                            <p class="project-note">Links will be available when a real project is added.</p>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="sites" data-reveal>
+                        <div class="project-preview" role="img" aria-label="Project preview placeholder"><span>Project preview</span><span aria-hidden="true">02</span></div>
+                        <div class="project-content">
+                            <p class="project-kind">Website · Fictional example</p>
+                            <h3>Aurora Café</h3>
+                            <p>An example website for a coffee shop, showcasing the brand and menu highlights.</p>
+                            <ul class="tags" aria-label="Technologies"><li>HTML</li><li>CSS</li></ul>
+                            <div class="project-actions"><button class="project-link" type="button" disabled>View website ↗</button><button class="project-link" type="button" disabled>Code ↗</button></div>
+                            <p class="project-note">Links will be available when a real project is added.</p>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="estudos" data-reveal>
+                        <div class="project-preview" role="img" aria-label="Project preview placeholder"><span>Project preview</span><span aria-hidden="true">03</span></div>
+                        <div class="project-content">
+                            <p class="project-kind">Study · Fictional example</p>
+                            <h3>Study dashboard</h3>
+                            <p>An example interface for organizing study topics and exploring browser interactions.</p>
+                            <ul class="tags" aria-label="Technologies"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+                            <div class="project-actions"><button class="project-link" type="button" disabled>View website ↗</button><button class="project-link" type="button" disabled>Code ↗</button></div>
+                            <p class="project-note">Links will be available when a real project is added.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <div class="journey container">
+            <section id="formacao" class="journey-row" aria-labelledby="formacao-title" data-reveal>
+                <div><p class="eyebrow">My foundation</p><h2 id="formacao-title">Education</h2></div>
+                <div><h3>Computer Science</h3><p>UNIFACS <span aria-hidden="true">·</span> In progress</p><!-- Adicione cursos e certificações reais aqui. --></div>
+            </section>
+            <section id="objetivos" class="journey-row" aria-labelledby="objetivos-title" data-reveal>
+                <div><p class="eyebrow">The next step</p><h2 id="objetivos-title">My goals</h2></div>
+                <div><h3>Building a career in cybersecurity</h3><p>I want to specialize in cybersecurity and work in this field, developing the knowledge to help protect systems, networks and information.</p></div>
+            </section>
+            <section id="experiencias" class="journey-row" aria-labelledby="experiencias-title" data-reveal>
+                <div><p class="eyebrow">My journey</p><h2 id="experiencias-title">Experience</h2></div>
+                <div><h3>A work in progress</h3><p>I will soon share my experiences, projects and what I have learned here.</p><!-- Substitua por suas experiências reais. --></div>
+            </section>
+        </div>
+
+        <section id="habilidades" class="section container skills-section" aria-labelledby="habilidades-title">
+            <div class="section-heading" data-reveal>
+                <h2 id="habilidades-title">Skills</h2>
+            </div>
+            <!-- Para adicionar uma habilidade, copie um li da lista skills-tags da categoria.
+                 Para uma categoria nova, copie um article.skill-card completo, altere o h3
+                 e suas etiquetas. Mantenha data-reveal para usar a animação de entrada. -->
+            <div class="skills-grid">
+                <article class="skill-card" data-reveal>
+                    <h3>Front-end</h3>
+                    <ul class="skills-tags" aria-label="Front-end skills">
+                        <li><span aria-hidden="true">◇</span> HTML</li>
+                        <li><span aria-hidden="true">◇</span> CSS</li>
+                        <li><span aria-hidden="true">◇</span> JavaScript</li>
+                    </ul>
+                </article>
+                <article class="skill-card" data-reveal>
+                    <h3>Back-end and programming</h3>
+                    <ul class="skills-tags" aria-label="Back-end and programming skills">
+                        <li><span aria-hidden="true">◇</span> Python</li>
+                        <li><span aria-hidden="true">◇</span> Java</li>
+                        <li><span aria-hidden="true">◇</span> JavaScript</li>
+                    </ul>
+                </article>
+                <article class="skill-card" data-reveal>
+                    <h3>Automation and Artificial Intelligence</h3>
+                    <ul class="skills-tags" aria-label="Automation and artificial intelligence skills">
+                        <li><span aria-hidden="true">◇</span> Workflow automation with n8n</li>
+                        <li><span aria-hidden="true">◇</span> Artificial Intelligence (using AI and integrating APIs)</li>
+                    </ul>
+                </article>
+                <article class="skill-card" data-reveal>
+                    <h3>Cybersecurity and computers</h3>
+                    <p class="learning-label"><span aria-hidden="true">◇</span> Learning in progress</p>
+                    <p class="skill-description">Cybersecurity is my career goal. I will update this space as I progress in my studies.</p>
+                    <!-- Adicione ferramentas e habilidades reais aqui quando quiser. -->
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div><a class="brand" href="#inicio">Igor C. Sales</a><p>Computer Science, projects and learning.</p></div>
+            <div class="footer-links">
+                <a href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Igor C. Sales on GitHub, opens in a new tab">GitHub ↗</a>
+                <!-- Substitua os textos abaixo por links reais quando quiser divulgar seus contatos. -->
+                <span>LinkedIn · coming soon</span><span>igorcordeirosales@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+    <a class="back-to-top" href="#inicio" aria-label="Back to top" hidden>↑</a>
+</body>
+</html>

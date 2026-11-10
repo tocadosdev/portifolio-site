@@ -173,3 +173,21 @@ body.menu-ready .hero { padding-top: 150px; }
 .not-found-card > p:not(.eyebrow):not(.not-found-code) { max-width: 48ch; margin-bottom: 28px; }
 .not-found-footer { padding-block: 24px; font-size: .8rem; border-top: 1px solid var(--border); }
 .not-found-footer p { margin-bottom: 0; }
+
+/* Idiomas: seletor oval discreto no canto superior esquerdo do cabeçalho. */
+:root { --header-height: 132px; }
+.language-bar { min-height: 40px; padding-top: 8px; display: flex; align-items: center; }
+.language-switch { display: inline-flex; align-items: center; gap: 3px; width: fit-content; padding: 3px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
+.language-switch a { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 28px; padding: 3px 10px; border-radius: 999px; color: var(--muted); font-size: .65rem; font-weight: 800; letter-spacing: .03em; transition: background-color .2s, color .2s; }
+.language-switch img { width: 20px; height: 14px; border-radius: 2px; flex-shrink: 0; }
+.language-switch a:hover { color: var(--accent); background: var(--accent-soft); }
+.language-switch a[aria-current="page"] { background: var(--paper); color: var(--accent); box-shadow: 0 1px 5px var(--shadow-color); }
+.navigation { min-height: 90px; }
+.hero { padding-top: 274px; }
+body.menu-ready .hero { padding-top: 188px; }
+@media (min-width: 960px) {
+    :root { --header-height: 126px; }
+    .navigation { min-height: 84px; }
+    .hero, body.menu-ready .hero { padding-top: 194px; }
+}
+@media (prefers-reduced-motion: reduce) { .language-switch a { transition: none; } }

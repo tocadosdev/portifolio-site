@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="alternate" hreflang="pt-BR" href="https://igordev-portifolio.vercel.app/">
+    <link rel="alternate" hreflang="en" href="https://igordev-portifolio.vercel.app/en.html">
+    <link rel="alternate" hreflang="x-default" href="https://igordev-portifolio.vercel.app/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -21,6 +24,13 @@
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="reading-progress" aria-hidden="true"></div>
     <header class="site-header">
+        <div class="language-bar container">
+            <!-- Links funcionam sem JavaScript; a página ativa é indicada por aria-current. -->
+            <nav class="language-switch" aria-label="Escolher idioma">
+                <a href="index.html" lang="pt-BR" hreflang="pt-BR" aria-label="Português do Brasil" aria-current="page"><img src="flag-br.svg" alt="" width="20" height="14"><span>PT-BR</span></a>
+                <a href="en.html" lang="en" hreflang="en" aria-label="Ler em inglês"><img src="flag-us.svg" alt="" width="20" height="14"><span>ENG</span></a>
+            </nav>
+        </div>
         <nav class="navigation container" aria-label="Navegação principal">
             <a class="brand" href="#inicio" aria-label="Igor C. Sales, início">Igor C. Sales</a>
             <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" hidden>Menu <span aria-hidden="true">☰</span></button>

@@ -1,3 +1,9 @@
+// Textos de interface conforme o idioma da página; sem bibliotecas externas.
+const english = document.documentElement.lang.toLowerCase().startsWith('en');
+const ui = english
+    ? { close: 'Close ', menu: 'Menu ', phrases: ['Computer Science student', 'My next step: cybersecurity'], one: ' project displayed.', many: ' projects displayed.' }
+    : { close: 'Fechar ', menu: 'Menu ', phrases: ['Estudante de Ciência da Computação', 'Meu próximo passo: cibersegurança'], one: ' projeto exibido.', many: ' projetos exibidos.' };
+
 // 1. Menu: melhoria progressiva, teclado e retorno do foco.
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const desktop = window.matchMedia('(min-width: 960px)');
@@ -11,7 +17,7 @@ document.body.classList.add('menu-ready');
 function setMenu(open) {
     menu.hidden = !open;
     menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.firstChild.textContent = open ? 'Fechar ' : 'Menu ';
+    menuButton.firstChild.textContent = open ? ui.close : ui.menu;
 }
 function adaptMenu() {
     const activeElement = document.activeElement;
@@ -51,7 +57,7 @@ adaptMenu();
 
 // 2. Digitação sem cursor. O texto completo e acessível já está no hero.
 const typewriter = document.querySelector('#typewriter');
-const phrases = ['Estudante de Ciência da Computação', 'Meu próximo passo: cibersegurança'];
+const phrases = ui.phrases;
 let phraseIndex = 0;
 let position = phrases[0].length;
 let deleting = true;
@@ -125,7 +131,7 @@ filters.querySelectorAll('button').forEach(button => {
             card.hidden = category !== 'todos' && card.dataset.category !== category;
             if (!card.hidden) visibleCount++;
         });
-        filterStatus.textContent = visibleCount + (visibleCount === 1 ? ' projeto exibido.' : ' projetos exibidos.');
+        filterStatus.textContent = visibleCount + (visibleCount === 1 ? ui.one : ui.many);
         scheduleScroll();
     });
 });
