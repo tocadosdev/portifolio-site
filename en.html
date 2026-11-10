@@ -6,6 +6,8 @@
     <title>Igor C. Sales | Computer Science, projects and cybersecurity</title>
     <meta name="description" content="Portfolio of Igor C. Sales, a Computer Science student at UNIFACS. Explore my background, projects and interest in cybersecurity.">
     <meta name="theme-color" content="#fcfcfb">
+    <!-- Script mínimo antes do CSS; hash correspondente na CSP de vercel.json. -->
+    <script>(()=>{let t;try{t=localStorage.getItem('portfolio-theme')}catch{}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=t==='dark'?'#1b2027':'#fcfcfb'})();</script>
     <link rel="canonical" href="https://igordev-portifolio.vercel.app/en.html">
     <meta property="og:title" content="Igor C. Sales | Computer Science, projects and cybersecurity">
     <meta property="og:description" content="Portfolio of Igor C. Sales, a Computer Science student at UNIFACS. Explore my background, projects and interest in cybersecurity.">
@@ -32,6 +34,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="theme.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#conteudo">Skip to content</a>
@@ -55,6 +58,19 @@
                 <li><a href="#experiencias">Experience</a></li>
                 <li><a href="#habilidades">Skills</a></li>
                 <li><a href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Igor C. Sales on GitHub, opens in a new tab">GitHub <span aria-hidden="true">↗</span></a></li>
+                <li class="theme-menu-item"><button class="theme-toggle" type="button" aria-label="Enable dark mode" aria-pressed="false" hidden>
+                        <span class="theme-track" aria-hidden="true"></span>
+                        <span class="theme-knob" aria-hidden="true">
+                            <svg class="theme-icon theme-sun" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" focusable="false">
+                                <circle cx="12" cy="12" r="3.5"/>
+                                <g class="theme-sun-rays"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></g>
+                            </svg>
+                            <svg class="theme-icon theme-moon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                <path d="M18.3 15.7A7.3 7.3 0 0 1 8.3 5.7a7.5 7.5 0 1 0 10 10Z"/>
+                                <g class="theme-stars"><path d="M17 3v4M15 5h4M21 9v2M20 10h2"/></g>
+                            </svg>
+                        </span>
+                    </button></li>
             </ul>
         </nav>
     </header>
