@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="theme.js" defer></script>
+    <script src="now.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#conteudo">Skip to content</a>
@@ -57,6 +58,7 @@
                 <li><a href="#objetivos">Goals</a></li>
                 <li><a href="#experiencias">Experience</a></li>
                 <li><a href="#habilidades">Skills</a></li>
+                <li><a href="#agora">Now</a></li>
                 <li><a href="https://github.com/tocadosdev" target="_blank" rel="noopener noreferrer" aria-label="Igor C. Sales on GitHub, opens in a new tab">GitHub <span aria-hidden="true">↗</span></a></li>
                 <li class="theme-menu-item"><button class="theme-toggle" type="button" aria-label="Enable dark mode" aria-pressed="false" hidden>
                         <span class="theme-track" aria-hidden="true"></span>
@@ -219,6 +221,36 @@
                     <p class="skill-description">Cybersecurity is my career goal. I will update this space as I progress in my studies.</p>
                     <!-- Adicione ferramentas e habilidades reais aqui quando quiser. -->
                 </article>
+            </div>
+        </section>
+
+        <section id="agora" class="section container now-section" aria-labelledby="agora-title">
+            <div class="now-heading" data-reveal>
+                <div><p class="eyebrow">Learning in progress</p><h2 id="agora-title">Now</h2><p>What I am studying at the moment.</p></div>
+                <!-- Edite updated no topo de now.js para alterar mês/ano. -->
+                <p class="now-updated"><span class="now-updated-label">Updated: </span><time datetime="2026-11">11/2026</time></p>
+            </div>
+            <div class="now-layout">
+                <!-- Áreas, temas, explicações e destaques ficam em NOW_DATA no topo de now.js. -->
+                <div class="now-content">
+                    <p>Artificial Intelligence · Applied Computational Mathematics · Software Design and Engineering</p>
+                    <noscript><p>Enable JavaScript to explore the topics and explanations.</p></noscript>
+                </div>
+                <aside class="now-visual" aria-label="Connections between ideas">
+                    <svg class="now-network" viewBox="0 0 300 180" aria-hidden="true" focusable="false">
+                        <g class="now-connections" fill="none">
+                            <path d="M30 55 110 30 190 55 270 90M30 55 110 90 190 55M30 55 110 150 190 125 270 90M30 125 110 30 190 125M30 125 110 90 190 125M30 125 110 150M110 30 190 55M110 90 190 125M110 150 190 55M110 90 190 55"/>
+                        </g>
+                        <g class="now-nodes">
+                            <circle class="now-node" cx="30" cy="55" r="6"/><circle class="now-node" cx="30" cy="125" r="6"/>
+                            <circle class="now-node" cx="110" cy="30" r="6"/><circle class="now-node" cx="110" cy="90" r="6"/><circle class="now-node" cx="110" cy="150" r="6"/>
+                            <circle class="now-node" cx="190" cy="55" r="6"/><circle class="now-node" cx="190" cy="125" r="6"/>
+                            <circle class="now-node" cx="270" cy="90" r="7"/>
+                        </g>
+                    </svg>
+                    <p class="eyebrow">Connecting ideas</p>
+                    <p>Exploring the connections between AI, mathematics and software.</p>
+                </aside>
             </div>
         </section>
     </main>
