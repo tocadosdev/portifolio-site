@@ -128,7 +128,7 @@ body.menu-ready .hero { padding-top: 150px; }
 @media (hover: hover) { .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px var(--shadow-color); } }
 .project-preview { aspect-ratio: 8 / 5; padding: 24px; display: flex; align-items: flex-end; justify-content: space-between; background: linear-gradient(135deg, var(--preview), var(--preview-end)); color: var(--muted); font-size: .7rem; border-bottom: 1px solid var(--border); }
 .project-preview > span:last-child { font-size: 2.7rem; line-height: 1; font-weight: 500; color: var(--muted); }
-.project-card > img { width: 100%; aspect-ratio: 8 / 5; object-fit: cover; border-bottom: 1px solid var(--border); }
+.project-card > img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; border-bottom: 1px solid var(--border); }
 .project-content { padding: 24px; }
 .project-kind { font-size: .65rem; color: var(--accent); text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: 12px; }
 .project-content h3 { margin-bottom: 12px; }
